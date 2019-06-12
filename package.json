@@ -8,13 +8,15 @@
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
+  "license": "Strictly private",
+  "homepage": "https://georgius1024.github.io/worrit/",
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
-    "material-design-icons-iconfont": "^3.0.3",
-    "roboto-fontface": "*",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "material-design-icons-iconfont": "^3.0.3",
+    "roboto-fontface": "*",
     "vuetify": "^1.5.5"
   },
   "devDependencies": {
