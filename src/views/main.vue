@@ -33,7 +33,7 @@
         </p>
         <p>Whenever you need to stop worrying, drop it all off right here.</p>
         <div class="text-xs-center mt-4">
-          <v-btn @click="toMain">Drop my worries off now</v-btn>
+          <v-btn light @click="toMain">Drop my worries off now</v-btn>
         </div>
 
         <h1 class="display-1" id="main">Check-in your worries here</h1>
@@ -70,9 +70,9 @@
           max="24"
           min="1"
           height="48"
-          ticks
-          thumb-color="#777"
-          tick-size="4"
+          ticks="always"
+          thumb-color="#333"
+          tick-size="6"
           thumb-label="always"
           :rules="[validation.fieldIsRequired]"
           @input="store()"
@@ -94,7 +94,7 @@
           development purposes, so please don’t insert any contact or identifying information there.
         </p>
         <div class="text-xs-center mt-4">
-          <v-btn id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">Start my break</v-btn>
+          <v-btn light id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">Start my break</v-btn>
         </div>
       </v-flex>
     </v-layout>
@@ -224,7 +224,7 @@ export default {
 </script>
 <style>
   #cta[disabled] {
-    background-color: #777 !important;
+    background-color: #999 !important;
   }
   .display-1 {
     font-weight: bold;
