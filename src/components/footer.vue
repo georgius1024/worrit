@@ -1,6 +1,6 @@
 <template>
   <v-footer dark class="mt-5">
-    <v-layout class="wrapper">
+    <v-layout class="wrapper" wrap>
       <v-flex xs12 md4>
         <v-layout align-center justify-center>
           Share

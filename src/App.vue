@@ -23,7 +23,7 @@ export default {
 html {
   overflow-y: auto;
   scroll-behavior: smooth;
-  background: linear-gradient(to bottom, #089393, #0a7bb6);
+  background: linear-gradient(to bottom, #0eaba1, #0a7bb6);
 }
 body {
   background: url('./assets/waves.png');
