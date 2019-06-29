@@ -12,16 +12,15 @@ export default new Router({
       component: MainView
     },
     {
-      path: "/landing",
-      name: "landing",
-      component: () =>
-        import(/* webpackChunkName: "landing" */ "./views/landing.vue")
-    },
-    {
       path: "/succes",
       name: "success",
       component: () =>
         import(/* webpackChunkName: "success" */ "./views/success.vue")
+    },
+    {
+      path: "*",
+      component: () =>
+        import(/* webpackChunkName: "error" */ "./views/error.vue")
     }
   ]
 });

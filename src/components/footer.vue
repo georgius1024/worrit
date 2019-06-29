@@ -1,6 +1,6 @@
 <template>
   <v-footer dark class="mt-5">
-    <v-layout>
+    <v-layout class="wrapper">
       <v-flex xs12 md4>
         <v-layout align-center justify-center>
           Share
@@ -11,12 +11,12 @@
       </v-flex>
       <v-flex xs12 md4 class="text-xs-center">
         <v-layout align-center justify-center>
-          Support project
+          Support the project
         </v-layout>
       </v-flex>
       <v-flex xs12 md4>
         <v-layout align-center justify-center>
-          Have a suggestion?
+          <a href="mailto://worrit.app@gmail.com" class="white--text">Have a suggestion?</a>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -30,8 +30,10 @@ export default {
 </script>
 <style scoped>
 .v-footer.theme--dark {
-  background: inherit;
-  width: 600px;
+  background: rgba(10, 123, 182, 0.8);
+}
+.wrapper {
+  max-width: 600px;
   margin: 0 auto;
 }
 .icon {

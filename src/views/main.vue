@@ -1,32 +1,75 @@
 <template>
   <v-content>
-    <v-layout>
+    <v-layout class="pa-4">
       <v-flex md6 offset-md3>
-        <h1 class="display-1">Check-in your worries here</h1>
+        <h1 class="display-1">Worrit.<br>The world's first worrysitter.</h1>
+        <v-layout class="theme--dark mb-1 mt-5" row wrap>
+          <v-flex class="text-xs-center" xs12 sm4>
+            <div class="max-width-80 h-margin-auto">
+              <img :src="require('../assets/5-years.png')" class="icon"/>
+              <p class="caption">on average we spends of life worrying</p>
+            </div>
+          </v-flex>
+          <v-flex class="text-xs-center" xs12 sm4>
+            <div class="max-width-80 h-margin-auto">
+              <img :src="require('../assets/every-day.png')" class="icon"/>
+              <p class="caption">38% of people worry every day</p>
+            </div>
+          </v-flex>
+          <v-flex class="text-xs-center" xs12 sm4>
+            <div class="max-width-80 h-margin-auto">
+              <img :src="require('../assets/never-happens.png')" class="icon"/>
+              <p class="caption">85% of what we worry about never happens</p>
+            </div>
+          </v-flex>
+        </v-layout>
+        <p>
+          Your worries are unique and deserve maximum attention. Nobody can attend to them better than you do.
+          But sometimes you need a break.
+        </p>
+        <p>
+          Worrit is the world’s first fully automated worrysitter. It keeps your cares under a watchful robot eye for as long as you want, and returns them to you when you’re ready.
+          Now you can unblock your mind, focus, or have some carefree time - for free!
+        </p>
+        <p>Whenever you need to stop worrying, drop it all off right here.</p>
+        <div class="text-xs-center mt-4">
+          <v-btn @click="toMain">Drop my worries off now</v-btn>
+        </div>
+
+        <h1 class="display-1" id="main">Check-in your worries here</h1>
         <p>Enter your worries in the following form, one by one, as many as you want.</p>
         <p v-for="(pair, index) in pairs" :key="pair.worry">
           <v-text-field
+            background-color="#fff"
+            light
+            box
             :label="pair.prompt"
             v-model="pair.worry"
             :autofocus="index === lastEditedWorry"
             @input="updateItem(index, pair.worry)"
-            append-outer-icon="clear"
+            append-icon="clear"
             @click:append-outer="removeItem(index)"
           />
         </p>
         <v-text-field
+          background-color="#fff"
+          light
+          box
           label="I worry about..."
           v-model="worry"
-          append-outer-icon="add"
+          append-icon="add"
           @keyup.enter="addItem"
           @click:append-outer="addItem"
         />
-        <div class="mt-3 mb-5 v-label theme--light">For how many hours you want to drop them?</div>
+        <div class="mt-3 mb-5 v-label theme--dark">For how many hours you want to drop them?</div>
         <v-slider
+          dark
           always-dirty
           v-model="hours"
+          color="#fff"
           max="24"
           min="1"
+          height="48"
           ticks
           thumb-color="#777"
           tick-size="4"
@@ -35,6 +78,9 @@
           @input="store()"
         />
         <v-text-field
+          background-color="#fff"
+          light
+          box
           v-model="email"
           @input="store()"
           :rules="[validation.emailIsRequired, validation.emailMustBeValid]"
@@ -48,15 +94,13 @@
           development purposes, so please don’t insert any contact or identifying information there.
         </p>
         <div class="text-xs-center mt-4">
-          <v-btn @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">Start my break</v-btn>
+          <v-btn id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">Start my break</v-btn>
         </div>
       </v-flex>
     </v-layout>
-    <AboutButton/>
   </v-content>
 </template>
 <script>
-import AboutButton from '../components/about'
 import validation from '../utils/validation'
 import axios from 'axios'
 import config from '../config'
@@ -67,9 +111,6 @@ const API = axios.create({
 
 export default {
   name: 'Main',
-  components: {
-    AboutButton
-  },
   data() {
     return {
       worries: [],
@@ -168,6 +209,11 @@ export default {
           return 'and...'
       }
     },
+    toMain() {
+      document.querySelector('#main').scrollIntoView({
+        behavior: 'smooth'
+      });
+    },
     book() {
       const data = {
         email: this.email,
@@ -183,3 +229,23 @@ export default {
   }
 }
 </script>
+<style>
+  #cta[disabled] {
+    background-color: #777 !important;
+  }
+  .display-1 {
+    font-weight: bold;
+  }
+  .v-messages__message {
+    color: #fff !important;
+  }
+  #main {
+    margin-top: 50%
+  }
+  .max-width-80 {
+    max-width: 80px;
+  }
+  .h-margin-auto {
+    margin: 0 auto
+  }
+</style>
