@@ -227,7 +227,7 @@ export default {
     background-color: #999 !important;
   }
   .display-1 {
-    font-weight: bold;
+    font-weight: 800;
   }
   .v-messages__message {
     color: #fff !important;
