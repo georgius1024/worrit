@@ -37,7 +37,7 @@
         </div>
 
         <h1 class="display-1" id="main">Check-in your worries here</h1>
-        <p>Enter your worries in the following form, one by one, as many as you want.</p>
+        <p>Enter your worries in the following form, one by one, as many as you want. Complete sentence "I worry about&hellip;" </p>
         <p v-for="(pair, index) in pairs" :key="pair.worry">
           <v-text-field
             background-color="#fff"
