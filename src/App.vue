@@ -1,25 +1,13 @@
 <template>
-  <v-app>
-    <v-fade-transition>
-      <router-view/>
-    </v-fade-transition>
-    <Footer/>
-  </v-app>
+  <div classs="app-wrapper">
+    <v-app dark>
+      <v-fade-transition>
+        <router-view/>
+      </v-fade-transition>
+      <Footer/>
+    </v-app>
+  </div>
 </template>
-<script>
-export default {
-  name: "App"
-};
-</script>
-
-<style>
-html {
-  overflow-y: auto;
-}
-.text--accent {
-  color: #536dfe;
-}
-</style>
 <script type="text/babel">
 import Footer from "./components/footer";
 export default {
@@ -29,3 +17,18 @@ export default {
   }
 };
 </script>
+
+<style>
+
+html {
+  overflow-y: auto;
+  background: linear-gradient(to bottom, #0eaba1, #0a7bb6);
+}
+.theme--dark.application {
+  background: inherit;
+}
+
+.text--accent {
+  color: #536dfe;
+}
+</style>

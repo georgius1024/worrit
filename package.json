@@ -16,7 +16,6 @@
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "material-design-icons-iconfont": "^3.0.3",
-    "roboto-fontface": "*",
     "vuetify": "^1.5.5"
   },
   "devDependencies": {

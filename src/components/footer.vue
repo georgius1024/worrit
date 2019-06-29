@@ -1,24 +1,22 @@
 <template>
-  <v-footer app dark>
+  <v-footer dark class="mt-5">
     <v-layout>
       <v-flex xs12 md4>
         <v-layout align-center justify-center>
+          Share
           <img :src="require('../assets/facebook-box.svg')" class="icon">
           <img :src="require('../assets/instagram.svg')" class="icon">
           <img :src="require('../assets/twitter-box.svg')" class="icon">
-          Share
         </v-layout>
       </v-flex>
       <v-flex xs12 md4 class="text-xs-center">
         <v-layout align-center justify-center>
-          <img :src="require('../assets/paypal.svg')" class="icon">
-          Buy us a coffe
+          Support project
         </v-layout>
       </v-flex>
       <v-flex xs12 md4>
         <v-layout align-center justify-center>
-          <img :src="require('../assets/message-alert.svg')" class="icon">
-          Have a suggestion? Get in touch
+          Have a suggestion?
         </v-layout>
       </v-flex>
     </v-layout>
@@ -26,12 +24,16 @@
 </template>
 
 <script type="text/babel">
-import fbIcon from "../assets/facebook-box.svg";
 export default {
   name: "Footer"
 };
 </script>
 <style scoped>
+.v-footer.theme--dark {
+  background: inherit;
+  width: 600px;
+  margin: 0 auto;
+}
 .icon {
   width: 24px;
   height: 24px;
