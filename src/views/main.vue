@@ -147,13 +147,6 @@ export default {
   created() {
     this.restore()
   },
-  mounted() {
-    const landingHasBeenSeen = localStorage.getItem('landingHasBeenSeen')
-    if (!landingHasBeenSeen) {
-      this.$router.push('landing')
-      localStorage.setItem('landingHasBeenSeen', true)
-    }
-  },
   beforeDestroy() {
     this.store()
   },
