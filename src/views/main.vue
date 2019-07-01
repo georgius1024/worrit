@@ -268,7 +268,9 @@ export default {
 }
 
 #cta[disabled] {
-  background-color: #999 !important;
+  background-color: #ccc !important;
+  color: #333 !important;
+  cursor: not-allowed !important;
 }
 
 .display-1 {
