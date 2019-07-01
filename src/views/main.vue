@@ -1,103 +1,136 @@
 <template>
-  <v-content>
-    <v-layout class="pa-4">
-      <v-flex md6 offset-md3>
-        <h1 class="display-1">Worrit.<br>The world's first worrysitter.</h1>
-        <v-layout class="theme--dark mb-1 mt-5" row wrap>
-          <v-flex class="text-xs-center" xs12 sm4>
-            <div class="max-width-80 h-margin-auto">
-              <img :src="require('../assets/5-years.png')" class="icon"/>
-              <p class="caption">on average we spends of life worrying</p>
-            </div>
-          </v-flex>
-          <v-flex class="text-xs-center" xs12 sm4>
-            <div class="max-width-80 h-margin-auto">
-              <img :src="require('../assets/every-day.png')" class="icon"/>
-              <p class="caption">38% of people worry every day</p>
-            </div>
-          </v-flex>
-          <v-flex class="text-xs-center" xs12 sm4>
-            <div class="max-width-80 h-margin-auto">
-              <img :src="require('../assets/never-happens.png')" class="icon"/>
-              <p class="caption">85% of what we worry about never happens</p>
-            </div>
-          </v-flex>
-        </v-layout>
-        <p>
-          Your worries are unique and deserve maximum attention. Nobody can attend to them better than you do.
-          But sometimes you need a break.
-        </p>
-        <p>
-          Worrit is the world’s first fully automated worrysitter. It keeps your cares under a watchful robot eye for as long as you want, and returns them to you when you’re ready.
-          Now you can unblock your mind, focus, or have some carefree time - for free!
-        </p>
-        <p>Whenever you need to stop worrying, drop it all off right here.</p>
-        <div class="text-xs-center mt-4">
-          <v-btn light @click="toMain">Drop my worries off now</v-btn>
-        </div>
-
-        <h1 class="display-1" id="main">Check-in your worries here</h1>
-        <p>Enter your worries in the following form, one by one, as many as you want. Complete sentence "I worry about&hellip;" </p>
-        <p v-for="(pair, index) in pairs" :key="pair.worry">
+  <v-content id="top">
+    <v-fade-transition>
+      <v-layout class="pa-4" v-show="step===0">
+        <v-flex md6 offset-md3>
+          <h1 class="display-1 mb-5">Worrit.<br>The world's first worrysitter.</h1>
+          <v-layout class="theme--dark mb-1 mt-5 hidden-sm-and-down" row wrap>
+            <v-flex class="text-xs-center" sm4>
+              <div class="max-width-80 h-margin-auto">
+                <img :src="require('../assets/5-years.png')" class="icon"/>
+                <p class="caption">on average we spends 5 years of life worrying</p>
+              </div>
+            </v-flex>
+            <v-flex class="text-xs-center" xs12 sm4>
+              <div class="max-width-80 h-margin-auto">
+                <img :src="require('../assets/every-day.png')" class="icon"/>
+                <p class="caption">38% of people worry every day</p>
+              </div>
+            </v-flex>
+            <v-flex class="text-xs-center" xs12 sm4>
+              <div class="max-width-80 h-margin-auto">
+                <img :src="require('../assets/never-happens.png')" class="icon"/>
+                <p class="caption">85% of what we worry about never happens</p>
+              </div>
+            </v-flex>
+          </v-layout>
+          <v-layout class="theme--dark mb-1 mt-5 hidden-md-and-up" column>
+            <p class="caption my-2">
+              <img :src="require('../assets/5-years.png')" class="small-icon v-middle mr-2"/>
+              on average we spends 5 years of life worrying
+            </p>
+            <p class="caption my-2">
+              <img :src="require('../assets/every-day.png')" class="small-icon v-middle mr-2"/>
+              38% of people worry every day
+            </p>
+            <p class="caption my-2">
+              <img :src="require('../assets/never-happens.png')" class="small-icon v-middle mr-2"/>
+              85% of what we worry about never happens
+            </p>
+          </v-layout>
+          <p>
+            Your worries are unique and deserve maximum attention. Nobody can attend to them better than you do.
+            But sometimes you need a break.
+          </p>
+          <p>
+            Worrit is the world’s first fully automated worrysitter. It keeps your cares under a watchful robot eye
+            for
+            as long as you want, and returns them to you when you’re ready.
+            Now you can unblock your mind, focus, or have some carefree time - for free!
+          </p>
+          <p>Whenever you need to stop worrying, drop it all off right here.</p>
+          <div class="text-xs-center mt-4">
+            <v-btn light large block @click="toMain">
+              Drop my worries off now
+            </v-btn>
+          </div>
+        </v-flex>
+      </v-layout>
+    </v-fade-transition>
+    <v-fade-transition>
+      <v-layout class="pa-4" id="main" v-show="step===1">
+        <v-flex md6 offset-md3>
+          <h1 class="display-1 mb-4">Check-in your worries here</h1>
+          <div class="mb-3 v-label white--text">
+            Enter your worries in the following form, one by one, as many as you want. Complete sentence "I worry
+            about&hellip;"
+          </div>
+          <div v-for="(pair, index) in pairs" :key="pair.worry">
+            <v-text-field
+              background-color="#fff"
+              light
+              solo
+              :label="pair.prompt"
+              v-model="pair.worry"
+              :autofocus="index === lastEditedWorry"
+              @input="updateItem(index, pair.worry)"
+              append-icon="clear"
+              @click:append="removeItem(index)"
+            />
+          </div>
           <v-text-field
             background-color="#fff"
             light
-            box
-            :label="pair.prompt"
-            v-model="pair.worry"
-            :autofocus="index === lastEditedWorry"
-            @input="updateItem(index, pair.worry)"
-            append-icon="clear"
-            @click:append-outer="removeItem(index)"
+            solo
+            label="I worry about..."
+            v-model="worry"
+            append-icon="add"
+            @keyup.enter="addItem"
+            @click:append="addItem"
           />
-        </p>
-        <v-text-field
-          background-color="#fff"
-          light
-          box
-          label="I worry about..."
-          v-model="worry"
-          append-icon="add"
-          @keyup.enter="addItem"
-          @click:append-outer="addItem"
-        />
-        <div class="mt-3 mb-5 v-label theme--dark">For how many hours you want to drop them?</div>
-        <v-slider
-          dark
-          always-dirty
-          v-model="hours"
-          color="#fff"
-          max="24"
-          min="1"
-          height="48"
-          ticks="always"
-          thumb-color="#333"
-          tick-size="6"
-          thumb-label="always"
-          :rules="[validation.fieldIsRequired]"
-          @input="store()"
-        />
-        <v-text-field
-          background-color="#fff"
-          light
-          box
-          v-model="email"
-          @input="store()"
-          :rules="[validation.emailIsRequired, validation.emailMustBeValid]"
-          type="email"
-          label="An email where we'll return your worries after the time period ends"
-        />
-        <v-checkbox v-model="agreed" label="Accept the Privacy Policy"></v-checkbox>
-        <p>
-          We don’t need your personal info. We keep your email just until your booked period ends, and cancel it
-          afterwards. We don’t share your data with third parties. We might keep the worries you entered for the service
-          development purposes, so please don’t insert any contact or identifying information there.
-        </p>
-        <div class="text-xs-center mt-4">
-          <v-btn light id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">Start my break</v-btn>
-        </div>
-      </v-flex>
-    </v-layout>
+          <div class="mt-3 mb-5 v-label white--text">For how many hours you want to drop them?</div>
+          <v-slider
+            dark
+            always-dirty
+            class="px-2"
+            v-model="hours"
+            color="#fff"
+            max="24"
+            min="1"
+            height="48"
+            ticks="always"
+            thumb-color="#333"
+            tick-size="6"
+            thumb-label="always"
+            :step="smallDevice ? 2 : 1"
+            :rules="[validation.fieldIsRequired]"
+            @input="store()"
+          />
+          <v-text-field
+            background-color="#fff"
+            light
+            solo
+            v-model="email"
+            @input="store()"
+            :rules="[validation.emailIsRequired, validation.emailMustBeValid]"
+            type="email"
+            label="An email where we'll return your worries after the time period ends"
+          />
+          <v-checkbox v-model="agreed" label="Accept the Privacy Policy"></v-checkbox>
+          <div class="v-label white--text" style="line-height: 21px">
+            We don’t need your personal info. We keep your email just until your booked period ends, and cancel it
+            afterwards. We don’t share your data with third parties. We might keep the worries you entered for the
+            service
+            development purposes, so please don’t insert any contact or identifying information there.
+          </div>
+          <div class="text-xs-center mt-4">
+            <v-btn light large block id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">
+              Start my break
+            </v-btn>
+          </div>
+        </v-flex>
+      </v-layout>
+    </v-fade-transition>
   </v-content>
 </template>
 <script>
@@ -113,6 +146,7 @@ export default {
   name: 'Main',
   data() {
     return {
+      step: 0,
       worries: [],
       worry: '',
       hours: 3,
@@ -142,6 +176,9 @@ export default {
     },
     emailIsOk() {
       return this.email && validation.emailMustBeValid(this.email) === true
+    },
+    smallDevice() {
+      return ['xs', 'sm'].includes(this.$vuetify.breakpoint.name)
     }
   },
   created() {
@@ -152,7 +189,7 @@ export default {
   },
   methods: {
     addItem() {
-      if (this.worries.indexOf(this.worry) === -1) {
+      if (this.worry && this.worries.indexOf(this.worry) === -1) {
         this.worries = this.worries.concat([this.worry])
         this.worry = ''
       }
@@ -161,7 +198,7 @@ export default {
     updateItem(index, worry) {
       this.worries = this.worries.map((oldWorry, worryIndex) => {
         return worryIndex === index ? worry : oldWorry
-      })
+      }).filter(worry => Boolean(worry))
       this.lastEditedWorry = index
       this.store()
     },
@@ -203,9 +240,7 @@ export default {
       }
     },
     toMain() {
-      document.querySelector('#main').scrollIntoView({
-        behavior: 'smooth'
-      });
+      this.step = 1
     },
     book() {
       const data = {
@@ -223,22 +258,32 @@ export default {
 }
 </script>
 <style>
-  #cta[disabled] {
-    background-color: #999 !important;
-  }
-  .display-1 {
-    font-weight: 800;
-  }
-  .v-messages__message {
-    color: #fff !important;
-  }
-  #main {
-    margin-top: 50%
-  }
-  .max-width-80 {
-    max-width: 80px;
-  }
-  .h-margin-auto {
-    margin: 0 auto
-  }
+
+.small-icon {
+  width: 24px;
+}
+
+.v-middle {
+  vertical-align: middle;
+}
+
+#cta[disabled] {
+  background-color: #999 !important;
+}
+
+.display-1 {
+  font-weight: 800;
+}
+
+.v-messages__message {
+  color: #fff !important;
+}
+
+.max-width-80 {
+  max-width: 80px;
+}
+
+.h-margin-auto {
+  margin: 0 auto
+}
 </style>

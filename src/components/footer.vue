@@ -1,7 +1,7 @@
 <template>
-  <v-footer dark class="mt-5">
-    <v-layout class="wrapper" wrap>
-      <v-flex xs12 md4>
+  <v-footer dark height="auto">
+    <v-layout class="wrapper pa-3" wrap>
+      <v-flex xs6 md4>
         <v-layout align-center justify-center>
           Share
           <img :src="require('../assets/facebook-box.svg')" class="icon">
@@ -9,7 +9,7 @@
           <img :src="require('../assets/twitter-box.svg')" class="icon">
         </v-layout>
       </v-flex>
-      <v-flex xs12 md4 class="text-xs-center">
+      <v-flex xs6 md4 class="text-xs-center">
         <v-layout align-center justify-center>
           Support the project
         </v-layout>
@@ -30,7 +30,7 @@ export default {
 </script>
 <style scoped>
 .v-footer.theme--dark {
-  background: rgba(10, 123, 182, 0.8);
+  background: rgba(10, 123, 182, 0.7);
 }
 .wrapper {
   max-width: 600px;

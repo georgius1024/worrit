@@ -11,15 +11,12 @@
       </p>
       <p>Until then, don’t worry.</p>
     </v-card-text>
-    <AboutButton/>
   </v-card>
 </template>
 <script type="text/babel">
-import AboutButton from "../components/about";
 export default {
   name: "Success",
   components: {
-    AboutButton
   },
   data() {
     return {

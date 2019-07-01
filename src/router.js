@@ -11,12 +11,14 @@ export default new Router({
       name: "main",
       component: MainView
     },
+
     {
       path: "/succes",
       name: "success",
       component: () =>
         import(/* webpackChunkName: "success" */ "./views/success.vue")
     },
+
     {
       path: "*",
       component: () =>

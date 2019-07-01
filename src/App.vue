@@ -9,13 +9,14 @@
   </div>
 </template>
 <script type="text/babel">
-import Footer from "./components/footer";
+import Footer from './components/footer'
+
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Footer
   }
-};
+}
 </script>
 
 <style>
@@ -25,9 +26,17 @@ html {
   scroll-behavior: smooth;
   background: linear-gradient(to bottom, #0eaba1, #0a7bb6);
 }
+
 body {
-  background: url('./assets/waves.png');
+  background-image: url('./assets/waves.png');
+  background-repeat: repeat;
 }
+
+.height-100 {
+  min-height: 100vh;
+}
+
+
 .theme--dark.application {
   background: inherit;
 }
