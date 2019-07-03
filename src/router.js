@@ -17,7 +17,11 @@ export default new Router({
       name: "wait",
       component: () => import(/* webpackChunkName: "wait" */ "./views/wait.vue")
     },
-
+    {
+      path: "/core/:id",
+      name: "core",
+      component: () => import(/* webpackChunkName: "core" */ "./views/core.vue")
+    },
     {
       path: "*",
       component: () =>

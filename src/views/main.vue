@@ -165,9 +165,6 @@ export default {
         }
       })
     },
-    filteredWorries() {
-      return this.worries.filter(worry => Boolean(worry))
-    },
     effectiveWorries() {
       return [...this.worries, this.worry].filter(worry => Boolean(worry))
     },
@@ -245,7 +242,7 @@ export default {
     book() {
       const data = {
         email: this.email,
-        duration: this.hours + 'h',
+        duration: this.hours + 'm',
         worries: this.effectiveWorries
       }
       API.post('api/queue', data)
@@ -269,6 +266,13 @@ export default {
 
 .display-1 {
   font-weight: 800;
+}
+
+#cta[disabled] {
+  background-color: #ccc !important;
+  color: #333 !important;
+  cursor: not-allowed !important;
+  filter: blur(1px)
 }
 
 .v-messages__message {

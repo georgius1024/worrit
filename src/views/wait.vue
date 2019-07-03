@@ -4,8 +4,18 @@
       <v-flex md6 offset-md3>
         <h1 class="display-1 mb-5">Everything is ready</h1>
         <p>
-          We send mesage to your email address {email}. Please, confirm your booking by clicking button in message.
+          We send mesage to your email address {{email}}. Check your mail box very soon.
+          Please, confirm your booking by clicking button in message.
         </p>
+        <v-fade-transition>
+          <div v-if="timePassed">
+            <v-divider class="my-4"/>
+            <v-btn to="/" block>
+              Return to main page
+            </v-btn>
+          </div>
+        </v-fade-transition>
+
       </v-flex>
     </v-layout>
   </v-content>
@@ -15,7 +25,9 @@ export default {
   name: "Wait",
   data() {
     return {
-      email: ""
+      email: "",
+      timePassed: false,
+      timer: null
     };
   },
   mounted() {
@@ -24,6 +36,9 @@ export default {
     } catch (error) {
       //
     }
+    this.timer = setTimeout(() => {
+      this.$set(this, 'timePassed', true)
+    }, 2 * 1000)
   }
 };
 </script>
