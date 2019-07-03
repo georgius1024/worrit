@@ -13,10 +13,9 @@ export default new Router({
     },
 
     {
-      path: "/succes",
-      name: "success",
-      component: () =>
-        import(/* webpackChunkName: "success" */ "./views/success.vue")
+      path: "/wait",
+      name: "wait",
+      component: () => import(/* webpackChunkName: "wait" */ "./views/wait.vue")
     },
 
     {

@@ -245,12 +245,12 @@ export default {
     book() {
       const data = {
         email: this.email,
-        duration: this.hours,
+        duration: this.hours + 'h',
         worries: this.effectiveWorries
       }
       API.post('api/queue', data)
         .then(() => {
-          this.$router.push({ name: 'success' })
+          this.$router.push({ name: 'wait' })
         })
         .catch(console.error)
     }
@@ -267,18 +267,14 @@ export default {
   vertical-align: middle;
 }
 
-#cta[disabled] {
-  background-color: #ccc !important;
-  color: #333 !important;
-  cursor: not-allowed !important;
-}
-
 .display-1 {
   font-weight: 800;
 }
 
 .v-messages__message {
   color: #fff !important;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .max-width-80 {
