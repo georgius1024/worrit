@@ -44,4 +44,11 @@ body {
 .text--accent {
   color: #536dfe;
 }
+
+.display-1 {
+  font-weight: 800;
+}
+.body-2 {
+  font-weight: 600;
+}
 </style>

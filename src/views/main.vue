@@ -293,10 +293,6 @@ export default {
   vertical-align: middle;
 }
 
-.display-1 {
-  font-weight: 800;
-}
-
 #cta[disabled] {
   background-color: #ccc !important;
   color: #333 !important;
