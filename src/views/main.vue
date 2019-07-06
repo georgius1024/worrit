@@ -4,11 +4,18 @@
       <v-layout class="pa-4" v-show="step===0">
         <v-flex md6 offset-md3>
           <h1 class="display-1 mb-5">Worrit.<br>The world's first worrysitter.</h1>
+          <div class="quote mb-5">
+            <div>“Worry does not empty tomorrow of its sorrow, it empties today of its strength.”</div>
+            <div>Leo Buscaglia</div>
+          </div>
+
           <v-layout class="theme--dark mb-1 mt-5 hidden-sm-and-down" row wrap>
             <v-flex class="text-xs-center" sm4>
               <div class="max-width-80 h-margin-auto">
                 <img :src="require('../assets/5-years.png')" class="icon"/>
-                <p class="caption">on average we spends 5 years of life worrying</p>
+                <p class="caption">on average
+                  we spends 5 years of life worrying
+                </p>
               </div>
             </v-flex>
             <v-flex class="text-xs-center" xs12 sm4>
@@ -39,16 +46,38 @@
             </p>
           </v-layout>
           <p>
-            Your worries are unique and deserve maximum attention. Nobody can attend to them better than you do.
-            But sometimes you need a break.
+            In average,
+            <a href="https://www.counselheal.com/articles/3609/20130128/average-person-spends-5-years-life-worrying.htm"
+               class="white-link" target="_blank">
+              we spend 5 years of our lives worrying
+            </a>,
+            even if
+            <a href="https://www.huffpost.com/entry/85-of-what-we-worry-about_b_8028368" class="white-link"
+               target="_blank">
+              85% of what we worry about never happens
+            </a>.
+            <a href="https://www.webmd.com/balance/guide/how-worrying-affects-your-body" class="white-link"
+               target="_blank">
+              Constant worrying takes a toll on your emotional and physical health
+            </a>,
+            it prevents you from living in the moment, acting boldly, and working towards reaching your dreams.
           </p>
           <p>
-            Worrit is the world’s first fully automated worrysitter. It keeps your cares under a watchful robot eye
-            for
-            as long as you want, and returns them to you when you’re ready.
-            Now you can unblock your mind, focus, or have some carefree time - for free!
+            There are many tips to stop worrying - breathe, meditate, exercise, call a therapist - but they all require time and skill. When you feel your heart is racing and you can’t think straight, you need a quick fix. You need a pause. And this is where Worrit can help.
           </p>
-          <p>Whenever you need to stop worrying, drop it all off right here.</p>
+          <p>
+            <b>
+              Worrit is the world’s first fully automated worrysitter. Here’s how it works:
+            </b>
+          </p>
+          <ol>
+            <li>You submit a list of worries and choose for how many hours you want to pause them.</li>
+            <li>Worrit keeps your cares under a watchful robot eye and sends them back to you when you’re ready.</li>
+            <li class="red--text"><b>Immediately after, your data is automatically deleted to ensure that your experience is private.</b></li>
+          </ol>
+          <p>
+            Worrit allows you to unblock your mind, regain your strength, and focus on solutions instead of problems, for <b>free</b>.
+          </p>
           <div class="text-xs-center mt-4">
             <v-btn light large block @click="toMain">
               Drop my worries off now
@@ -60,10 +89,10 @@
     <v-fade-transition>
       <v-layout class="pa-4" id="main" v-show="step===1">
         <v-flex md6 offset-md3>
-          <h1 class="display-1 mb-4">Check-in your worries here</h1>
+          <h1 class="display-1 mb-4">Pause your worries, book a worrysitter</h1>
           <div class="mb-3 v-label white--text">
-            Enter your worries in the following form, one by one, as many as you want. Complete sentence "I worry
-            about&hellip;"
+            What bugs you, disturbs you, terrifies you, keeps you up at night? Enter your worries in the following form, one by one, as many as you want.
+            <a href="https://www.webmd.com/balance/features/9-steps-to-end-chronic-worrying#2" class="white-link" target="_blank">Making this list is proven to ease your worry.</a>
           </div>
           <div v-for="(pair, index) in pairs" :key="pair.worry">
             <v-text-field
@@ -246,10 +275,10 @@ export default {
         worries: this.effectiveWorries
       }
       API.post('api/queue', data)
-        .then(() => {
-          this.$router.push({ name: 'wait' })
-        })
-        .catch(console.error)
+      .then(() => {
+        this.$router.push({ name: 'wait' })
+      })
+      .catch(console.error)
     }
   }
 }
@@ -287,5 +316,20 @@ export default {
 
 .h-margin-auto {
   margin: 0 auto
+}
+
+.quote {
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+.white-link, white-link:visited {
+  text-decoration: none;
+  color: #eee;
+}
+
+.white-link:hover {
+  text-decoration: underline;
 }
 </style>
