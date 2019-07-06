@@ -117,7 +117,7 @@
             @keyup.enter="addItem"
             @click:append="addItem"
           />
-          <div class="mt-3 mb-5 v-label white--text">For how many hours you want to drop them?</div>
+          <div class="mt-3 mb-5 v-label white--text">For how many hours you want to pause them?</div>
           <v-slider
             dark
             always-dirty
@@ -143,14 +143,15 @@
             @input="store()"
             :rules="[validation.emailIsRequired, validation.emailMustBeValid]"
             type="email"
-            label="An email where we'll return your worries after the time period ends"
+            label="Your email. We need it to send your worries back when your booked period is over."
           />
-          <v-checkbox v-model="agreed" label="Accept the Privacy Policy"></v-checkbox>
+          <v-checkbox
+            v-model="agreed"
+            label="Accept the Privacy Policy"
+          />
           <div class="v-label white--text" style="line-height: 21px">
             We don’t need your personal info. We keep your email just until your booked period ends, and cancel it
-            afterwards. We don’t share your data with third parties. We might keep the worries you entered for the
-            service
-            development purposes, so please don’t insert any contact or identifying information there.
+            afterwards. We don’t share your data with third parties.
           </div>
           <div class="text-xs-center mt-4">
             <v-btn light large block id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">

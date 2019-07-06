@@ -4,14 +4,14 @@
       <v-flex md4 offset-md4 class="theme--dark align-self-center">
         <v-card light>
           <v-card-title primary-title>
-            <h1 class="display-1">Almost here!</h1>
+            <h1 class="display-1">Your carefree period is almost started!</h1>
           </v-card-title>
           <v-card-text class="body-2">
             <p>
               Check your inbox!
             </p>
             <p>
-              We sent you a message to make sure this email is yours. Please open it to start your booking.
+              We sent you a message to make sure this email is yours. Please open it to launch the worrysitter.
             </p>
           </v-card-text>
           <v-card-actions>

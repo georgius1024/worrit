@@ -4,19 +4,27 @@
       <v-flex xs6 md4>
         <v-layout align-center justify-center>
           Share
-          <img :src="require('../assets/facebook-box.svg')" class="icon">
-          <img :src="require('../assets/instagram.svg')" class="icon">
-          <img :src="require('../assets/twitter-box.svg')" class="icon">
+          <a class="mt-1" href="https://www.facebook.com/sharer/sharer.php&url=https://worrit.app" target="_blank">
+            <img :src="require('../assets/facebook-box.svg')" class="icon">
+          </a>
+          <a class="mt-1" href="#">
+            <img :src="require('../assets/instagram.svg')" class="icon">
+          </a>
+          <a class="mt-1" href="#">
+            <img :src="require('../assets/twitter-box.svg')" class="icon">
+          </a>
         </v-layout>
       </v-flex>
       <v-flex xs6 md4 class="text-xs-center">
         <v-layout align-center justify-center>
-          Support the project
+          <a class="mt-1 white--text" href="#">
+            Support the project
+          </a>
         </v-layout>
       </v-flex>
       <v-flex xs12 md4>
         <v-layout align-center justify-center>
-          <a href="mailto://worrit.app@gmail.com" class="white--text">Have a suggestion?</a>
+          <a href="mailto://worrit.app@gmail.com" class="mt-1 white--text">Have a suggestion?</a>
         </v-layout>
       </v-flex>
     </v-layout>

@@ -57,9 +57,13 @@
                 </h1>
               </v-card-title>
               <v-card-text>
-                <p> For the last {{duration}} I was taking care of your worries:
-                  biting nails, pacing from one corner of the Internet to another,
+                <p> For the last {{duration}}
+                  I was taking care of your worries:
+                  biting nails,
+                  pacing from one corner of the Internet to another,
                   and stress-eating all the visitors’ cookies.
+                </p>
+                <p>
                   Now it’s time to handle them back to you.
                 </p>
                 <p class="body-2 mb-0">
@@ -98,7 +102,7 @@
           </template>
           <template v-else>
             <h1 class="display-1">
-              Worrit is working...
+              Worrit, world’s first worrysitter, is taking care of your worries
             </h1>
             <p>
               Soften your forehead.
@@ -110,7 +114,20 @@
               We are taking care of your worries and we’ll send you an email when it’s time to pick them up.
               Until then, don’t worry.
             </p>
-            <v-progress-linear color="white" :indeterminate="true"></v-progress-linear>
+            <div class="animation-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="80px" height="60px"
+                viewBox="5 0 80 60">
+                <path
+                  id="wave"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round">
+                </path>
+              </svg>
+            </div>
             <div class="text-xs-center body-2">
               {{timeLeft}}
             </div>
@@ -131,7 +148,7 @@ const API = axios.create({
 })
 
 export default {
-  name: 'Wait',
+  name: 'Core',
   data() {
     return {
       booking: {
@@ -164,22 +181,26 @@ export default {
         error: false
       }
       API.get('api/queue/' + id)
-        .then(({ data: body }) => {
-          this.booking = body.data
-          if (this.booking.status === 'processing') {
-            this.timer = setInterval(() => {
-              this.check()
-            }, 1000)
+      .then(({ data: body }) => {
+        this.booking = body.data
+        if (this.booking.status === 'processing') {
+          this.timer = setInterval(() => {
             this.check()
-          }
-        })
-        .catch(error => {
-          this.booking = {
-            loading: false,
-            error: true
-          }
-          console.error(error)
-        })
+          }, 1000)
+          this.check()
+          this.$nextTick()
+          .then(() => {
+            this.initWave()
+          })
+        }
+      })
+      .catch(error => {
+        this.booking = {
+          loading: false,
+          error: true
+        }
+        console.error(error)
+      })
     },
     check() {
       const now = (new Date()).valueOf()
@@ -212,7 +233,104 @@ export default {
       portions.push('left')
       this.$set(this, 'rest', rest)
       this.$set(this, 'timeLeft', portions.filter(e => Boolean(e)).join(' '))
+    },
+    initWave() {
+      const path = document.querySelector('#wave')
+      const m = 0.512286623256592433
+
+      function buildWave(w, h) {
+
+        const a = h / 4
+        const y = h / 2
+
+        const pathData = [
+          'M', w * 0, y + a / 2,
+          'c',
+          a * m, 0,
+          -(1 - a) * m, -a,
+          a, -a,
+          's',
+          -(1 - a) * m, a,
+          a, a,
+          's',
+          -(1 - a) * m, -a,
+          a, -a,
+          's',
+          -(1 - a) * m, a,
+          a, a,
+          's',
+          -(1 - a) * m, -a,
+          a, -a,
+
+          's',
+          -(1 - a) * m, a,
+          a, a,
+          's',
+          -(1 - a) * m, -a,
+          a, -a,
+          's',
+          -(1 - a) * m, a,
+          a, a,
+          's',
+          -(1 - a) * m, -a,
+          a, -a,
+          's',
+          -(1 - a) * m, a,
+          a, a,
+          's',
+          -(1 - a) * m, -a,
+          a, -a,
+          's',
+          -(1 - a) * m, a,
+          a, a,
+          's',
+          -(1 - a) * m, -a,
+          a, -a,
+          's',
+          -(1 - a) * m, a,
+          a, a,
+          's',
+          -(1 - a) * m, -a,
+          a, -a
+        ].join(' ')
+
+        path.setAttribute('d', pathData)
+      }
+
+      buildWave(90, 60)
     }
   }
 }
 </script>
+<style>
+.animation-wrapper {
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  padding: 6px;
+  zoom: 300%;
+}
+
+.animation-wrapper>svg {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+#wave {
+  stroke-dasharray: 0 16 101 16;
+  animation: moveTheWave 2400ms linear infinite;
+}
+
+@keyframes moveTheWave {
+  0% {
+    stroke-dashoffset: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    stroke-dashoffset: -133;
+    transform: translate3d(-90px, 0, 0);
+  }
+}
+</style>
