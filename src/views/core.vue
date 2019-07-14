@@ -53,15 +53,12 @@
             <v-card light>
               <v-card-title primary-title>
                 <h1 class="display-1">
-                  Worrit did his job...
+                  Time to pick your worries up!
                 </h1>
               </v-card-title>
               <v-card-text>
                 <p> For the last {{duration}}
-                  I was taking care of your worries:
-                  biting nails,
-                  pacing from one corner of the Internet to another,
-                  and stress-eating all the visitors’ cookies.
+                  I was taking care of your worries: biting nails, pacing from one corner of the Internet to another, and stress-eating all the visitors’ cookies.
                 </p>
                 <p>
                   Now it’s time to handle them back to you.
@@ -78,13 +75,12 @@
                   Now, please take a careful look at them:
                 </p>
                 <ul class="mt-0">
-                  <li>Are these worries really yours, or somebody else has put them on you?</li>
-                  <li>Can you really do something about them, or these things are completely out of your control?</li>
-                  <li>Do you still need them? Do these worries motivate you or just wear you off?</li>
+                  <li>Are these worries really yours, not somebody else’s?</li>
+                  <li>Can you really do something about them?</li>
+                  <li>Do you still need them? Do these worries motivate you?</li>
                 </ul>
                 <p class="body-2">
-                  If you are sure that they are yours, that you can take care of them and they keep you energised, take
-                  them. If not, you can leave them here, it’s just fine.
+                  If the answers are yes, take them.
                 </p>
                 <p class="body-2">
                   If not, you can leave them here, it’s just fine.
@@ -102,7 +98,7 @@
           </template>
           <template v-else>
             <h1 class="display-1">
-              Worrit, world’s first worrysitter, is taking care of your worries
+              Worrit is working...
             </h1>
             <p>
               Soften your forehead.
@@ -111,10 +107,15 @@
               Focus on what really matters.
             </p>
             <p>
-              We are taking care of your worries and we’ll send you an email when it’s time to pick them up.
+              Worrit, the world’s first worrysitter, is taking care of your worries. You’ll get an email when it’s time to pick your cares up.
+            </p>
+            <p>
               Until then, don’t worry.
             </p>
             <div class="animation-wrapper">
+              <div>
+                ...{{currentWorry.worry}}...
+              </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80px" height="60px"
@@ -127,8 +128,11 @@
                   stroke-linecap="round">
                 </path>
               </svg>
+              <div>
+                ...{{currentWorry.action}}...
+              </div>
             </div>
-            <div class="text-xs-center body-2">
+            <div class="text-xs-center body-2 mt-2">
               {{timeLeft}}
             </div>
 
@@ -142,7 +146,7 @@
 import axios from 'axios'
 import config from '../config'
 import ms from 'ms'
-
+const currentWorry = require('../utils/worry')
 const API = axios.create({
   baseURL: config.apiEndPoint
 })
@@ -157,7 +161,8 @@ export default {
       },
       timeLeft: '',
       rest: 0,
-      timer: null
+      timer: null,
+      currentWorry: {}
     }
   },
   computed: {
@@ -233,6 +238,7 @@ export default {
       portions.push('left')
       this.$set(this, 'rest', rest)
       this.$set(this, 'timeLeft', portions.filter(e => Boolean(e)).join(' '))
+      this.currentWorry = currentWorry(this.booking.before, this.booking.worries) || {}
     },
     initWave() {
       const path = document.querySelector('#wave')
@@ -310,8 +316,12 @@ export default {
   border: 2px solid #fff;
   padding: 6px;
   zoom: 300%;
+  flex-direction: column;
 }
-
+.animation-wrapper>div {
+  text-align: center;
+  font-size: 6px;
+}
 .animation-wrapper>svg {
   margin: 0 auto;
   overflow: hidden;

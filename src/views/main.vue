@@ -4,47 +4,6 @@
       <v-layout class="pa-4" v-show="step===0">
         <v-flex md6 offset-md3>
           <h1 class="display-1 mb-5">Worrit.<br>The world's first worrysitter.</h1>
-          <div class="quote mb-5">
-            <div>“Worry does not empty tomorrow of its sorrow, it empties today of its strength.”</div>
-            <div>Leo Buscaglia</div>
-          </div>
-
-          <v-layout class="theme--dark mb-1 mt-5 hidden-sm-and-down" row wrap>
-            <v-flex class="text-xs-center" sm4>
-              <div class="max-width-80 h-margin-auto">
-                <img :src="require('../assets/5-years.png')" class="icon"/>
-                <p class="caption">on average
-                  we spends 5 years of life worrying
-                </p>
-              </div>
-            </v-flex>
-            <v-flex class="text-xs-center" xs12 sm4>
-              <div class="max-width-80 h-margin-auto">
-                <img :src="require('../assets/every-day.png')" class="icon"/>
-                <p class="caption">38% of people worry every day</p>
-              </div>
-            </v-flex>
-            <v-flex class="text-xs-center" xs12 sm4>
-              <div class="max-width-80 h-margin-auto">
-                <img :src="require('../assets/never-happens.png')" class="icon"/>
-                <p class="caption">85% of what we worry about never happens</p>
-              </div>
-            </v-flex>
-          </v-layout>
-          <v-layout class="theme--dark mb-1 mt-5 hidden-md-and-up" column>
-            <p class="caption my-2">
-              <img :src="require('../assets/5-years.png')" class="small-icon v-middle mr-2"/>
-              on average we spends 5 years of life worrying
-            </p>
-            <p class="caption my-2">
-              <img :src="require('../assets/every-day.png')" class="small-icon v-middle mr-2"/>
-              38% of people worry every day
-            </p>
-            <p class="caption my-2">
-              <img :src="require('../assets/never-happens.png')" class="small-icon v-middle mr-2"/>
-              85% of what we worry about never happens
-            </p>
-          </v-layout>
           <p>
             In average,
             <a href="https://www.counselheal.com/articles/3609/20130128/average-person-spends-5-years-life-worrying.htm"
@@ -71,12 +30,12 @@
             </b>
           </p>
           <ol>
-            <li>You submit a list of worries and choose for how many hours you want to pause them.</li>
+            <li>You submit a list of worries that you want to pause.</li>
             <li>Worrit keeps your cares under a watchful robot eye and sends them back to you when you’re ready.</li>
             <li class="red--text"><b>Immediately after, your data is automatically deleted to ensure that your experience is private.</b></li>
           </ol>
-          <p>
-            Worrit allows you to unblock your mind, regain your strength, and focus on solutions instead of problems, for <b>free</b>.
+          <p class="mt-4">
+            Worrit allows you to unblock your mind, regain your strength, and focus on solutions instead of problems, <b>for free</b>.
           </p>
           <div class="text-xs-center mt-4">
             <v-btn light large block @click="toMain">
@@ -92,7 +51,6 @@
           <h1 class="display-1 mb-4">Pause your worries, book a worrysitter</h1>
           <div class="mb-3 v-label white--text">
             What bugs you, disturbs you, terrifies you, keeps you up at night? Enter your worries in the following form, one by one, as many as you want.
-            <a href="https://www.webmd.com/balance/features/9-steps-to-end-chronic-worrying#2" class="white-link" target="_blank">Making this list is proven to ease your worry.</a>
           </div>
           <div v-for="(pair, index) in pairs" :key="pair.worry">
             <v-text-field
@@ -135,6 +93,9 @@
             :rules="[validation.fieldIsRequired]"
             @input="store()"
           />
+          <div class="v-label white--text mb-3" style="line-height: 21px">
+            Your email. We need it to send your worries back when your booked period is over.
+          </div>
           <v-text-field
             background-color="#fff"
             light
@@ -143,15 +104,14 @@
             @input="store()"
             :rules="[validation.emailIsRequired, validation.emailMustBeValid]"
             type="email"
-            label="Your email. We need it to send your worries back when your booked period is over."
+            placeholder="Your awesome email"
           />
           <v-checkbox
             v-model="agreed"
-            label="Accept the Privacy Policy"
+            label="Accept the Privacy Policy."
           />
-          <div class="v-label white--text" style="line-height: 21px">
-            We don’t need your personal info. We keep your email just until your booked period ends, and cancel it
-            afterwards. We don’t share your data with third parties.
+          <div class="v-label white--text mb-3" style="line-height: 21px">
+            We only use your data for as long as we need it to deliver the service, and we don’t share it with any third party.
           </div>
           <div class="text-xs-center mt-4">
             <v-btn light large block id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">
