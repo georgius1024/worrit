@@ -3,6 +3,8 @@
     <v-layout class="wrapper pa-3" wrap>
       <v-flex xs6 md4>
         <v-layout align-center justify-center>
+          <div class="sharethis-inline-share-buttons"></div>
+          <!--
           Share
           <a class="mt-1" href="https://www.facebook.com/sharer/sharer.php&url=https://worrit.app" target="_blank">
             <img :src="require('../assets/facebook-box.svg')" class="icon">
@@ -13,6 +15,7 @@
           <a class="mt-1" href="#">
             <img :src="require('../assets/twitter-box.svg')" class="icon">
           </a>
+          -->
         </v-layout>
       </v-flex>
       <v-flex xs6 md4 class="text-xs-center">

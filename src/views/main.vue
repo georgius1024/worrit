@@ -232,7 +232,7 @@ export default {
     book() {
       const data = {
         email: this.email,
-        duration: this.hours + 'm',
+        duration: this.hours + 'h',
         worries: this.effectiveWorries
       }
       API.post('api/queue', data)
