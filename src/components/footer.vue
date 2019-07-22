@@ -8,8 +8,8 @@
       </v-flex>
       <v-flex xs6 md4 class="text-xs-center">
         <v-layout align-center justify-center>
-          <a class="mt-1 white--text" href="#">
-            Support the project
+          <a class="mt-1 white--text" href="https://paypal.me/worritteam" target="_blank">
+            Support us
           </a>
         </v-layout>
       </v-flex>
@@ -24,17 +24,19 @@
 
 <script type="text/babel">
 export default {
-  name: "Footer"
-};
+  name: 'Footer'
+}
 </script>
 <style scoped>
 .v-footer.theme--dark {
   background: rgba(10, 123, 182, 0.7);
 }
+
 .wrapper {
   max-width: 600px;
   margin: 0 auto;
 }
+
 .icon {
   width: 24px;
   height: 24px;
