@@ -115,7 +115,7 @@
               picture_as_pdf
             </v-icon>
             <a class="white--text" href="/worrit_privacy_policy.pdf" target="_blank"
-            >Worrit privacy policy</a>
+            >See Worrit privacy policy</a>
           </div>
           <div class="v-label white--text mb-3" style="line-height: 21px">
             We only use your data for as long as we need it to deliver the service, and we don’t share it with any third party.

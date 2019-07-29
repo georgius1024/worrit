@@ -45,10 +45,14 @@ body {
   color: #536dfe;
 }
 
+body {
+  font-weight: 600;
+}
+
 .display-1 {
   font-weight: 800;
 }
 .body-2 {
-  font-weight: 600;
+  font-weight: 800;
 }
 </style>

@@ -8,14 +8,12 @@
       </v-flex>
       <v-flex xs6 md4 class="text-xs-center">
         <v-layout align-center justify-center>
-          <a class="mt-1 white--text" href="https://paypal.me/worritteam" target="_blank">
-            Support us
-          </a>
+          <router-link class="mt-1 white--text" :to="{name: 'about'}">About Worrit</router-link>
         </v-layout>
       </v-flex>
-      <v-flex xs12 md4>
+      <v-flex xs6 md4 class="text-xs-center">
         <v-layout align-center justify-center>
-          <a href="https://forms.gle/AmeP2KhFnYCWxKgNA" target="_blank" class="mt-1 white--text">Have a suggestion?</a>
+          <a class="mt-1 white--text" href="https://paypal.me/worritteam" target="_blank">Support Worrit</a>
         </v-layout>
       </v-flex>
     </v-layout>
