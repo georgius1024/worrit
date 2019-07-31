@@ -118,7 +118,7 @@
             >See Worrit privacy policy</a>
           </div>
           <div class="v-label white--text mb-3" style="line-height: 21px">
-            We only use your data for as long as we need it to deliver the service, and we don’t share it with any third party.
+            We only use your data to deliver the service, delete it shortly afterwards and don’t share it for any commercial purposes.
           </div>
           <div class="text-xs-center mt-4">
             <v-btn light large block id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">

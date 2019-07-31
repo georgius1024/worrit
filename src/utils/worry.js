@@ -14,8 +14,8 @@ const defaultActions = [
   'devour all the comfort food in 5km distance',
   'stare at the wall'
 ]
-module.exports = function currentWorry(before, worries, interval = 'minute', actions = defaultActions) {
-  const intervalsLeft = dayjs(before).diff(dayjs(), interval)
+module.exports = function currentWorry(before, worries, actions = defaultActions) {
+  const intervalsLeft = Math.floor(dayjs(before).diff(dayjs(), 'second') / 15)
   if (intervalsLeft < 0) {
     return
   }

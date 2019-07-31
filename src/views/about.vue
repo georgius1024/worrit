@@ -21,17 +21,15 @@
         </p>
         <img src="/us.png"/>
         <v-divider class="my-4"/>
-        <p>
-          <a class="white--text" href="https://forms.gle/AmeP2KhFnYCWxKgNA" target="_blank">Have a suggestion?</a>
-        </p>
-        <p>
-          <a class="white--text mt-1" href="https://paypal.me/worritteam" target="_blank"> Support us </a>
-        </p>
-        <div class="text-xs-center mt-4">
-          <v-btn light large block to="/">
-            Return to main page
-          </v-btn>
-        </div>
+        <v-btn light large block href="https://forms.gle/AmeP2KhFnYCWxKgNA" target="_blank" class="mt-3">
+          Leave a review
+        </v-btn>
+        <v-btn light large block href="https://paypal.me/worritteam" target="_blank" class="mt-3">
+          Support us
+        </v-btn>
+        <v-btn light large block to="/" class="mt-3">
+          Return to main page
+        </v-btn>
       </v-flex>
     </v-layout>
   </v-content>
