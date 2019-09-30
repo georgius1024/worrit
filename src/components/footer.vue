@@ -1,33 +1,30 @@
 <template>
   <v-footer dark height="auto">
     <v-layout class="wrapper pa-3" wrap>
-      <v-flex xs6 md4>
+      <v-flex xs6 md3>
         <v-layout align-center justify-center>
           <div class="sharethis-inline-share-buttons"></div>
-          <!--
-          Share
-          <a class="mt-1" href="https://www.facebook.com/sharer/sharer.php&url=https://worrit.app" target="_blank">
-            <img :src="require('../assets/facebook-box.svg')" class="icon">
-          </a>
-          <a class="mt-1" href="#">
-            <img :src="require('../assets/instagram.svg')" class="icon">
-          </a>
-          <a class="mt-1" href="#">
-            <img :src="require('../assets/twitter-box.svg')" class="icon">
-          </a>
-          -->
         </v-layout>
       </v-flex>
-      <v-flex xs6 md4 class="text-xs-center">
+      <v-flex xs6 md3 class="text-xs-center">
         <v-layout align-center justify-center>
-          <a class="mt-1 white--text" href="#">
-            Support the project
+          <router-link class="mt-1 white--text" :to="{name: 'about'}">
+            About Worrit
+          </router-link>
+        </v-layout>
+      </v-flex>
+      <v-flex xs6 md3 class="text-xs-center">
+        <v-layout align-center justify-center>
+          <a class="mt-1 white--text" href="https://paypal.me/worritteam" target="_blank">
+            Support Us
           </a>
         </v-layout>
       </v-flex>
-      <v-flex xs12 md4>
+      <v-flex xs6 md3 class="text-xs-center">
         <v-layout align-center justify-center>
-          <a href="mailto://worrit.app@gmail.com" class="mt-1 white--text">Have a suggestion?</a>
+          <a class="mt-1 white--text" href="https://forms.gle/AmeP2KhFnYCWxKgNA" target="_blank">
+            Leave a review
+          </a>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -36,17 +33,19 @@
 
 <script type="text/babel">
 export default {
-  name: "Footer"
-};
+  name: 'Footer'
+}
 </script>
 <style scoped>
 .v-footer.theme--dark {
   background: rgba(10, 123, 182, 0.7);
 }
+
 .wrapper {
   max-width: 600px;
   margin: 0 auto;
 }
+
 .icon {
   width: 24px;
   height: 24px;

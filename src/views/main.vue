@@ -22,7 +22,7 @@
             it prevents you from living in the moment, acting boldly, and working towards reaching your dreams.
           </p>
           <p>
-            There are many tips to stop worrying - breathe, meditate, exercise, call a therapist - but they all require time and skill. When you feel your heart is racing and you can’t think straight, you need a quick fix. You need a pause. And this is where Worrit can help.
+            The Internet has many tips to stop worrying - breathe, meditate, exercise, call a therapist, take off to a buddhist monastery. But sometimes what you need a is just a quick fix, a pause, a breath of fresh air. This is what Worrit is for.
           </p>
           <p>
             <b>
@@ -31,8 +31,8 @@
           </p>
           <ol>
             <li>You submit a list of worries that you want to pause.</li>
-            <li>Worrit keeps your cares under a watchful robot eye and sends them back to you when you’re ready.</li>
-            <li class="red--text"><b>Immediately after, your data is automatically deleted to ensure that your experience is private.</b></li>
+            <li>Worrit keeps them under a watchful robot eye and returns to you when you’re ready.</li>
+            <li>Immediately after, your data is automatically deleted to ensure that your experience is private.</li>
           </ol>
           <p class="mt-4">
             Worrit allows you to unblock your mind, regain your strength, and focus on solutions instead of problems, <b>for free</b>.
@@ -111,7 +111,14 @@
             label="Accept the Privacy Policy."
           />
           <div class="v-label white--text mb-3" style="line-height: 21px">
-            We only use your data for as long as we need it to deliver the service, and we don’t share it with any third party.
+            <v-icon class="mr-2">
+              picture_as_pdf
+            </v-icon>
+            <a class="white--text" href="/worrit_privacy_policy.pdf" target="_blank"
+            >See Worrit privacy policy</a>
+          </div>
+          <div class="v-label white--text mb-3" style="line-height: 21px">
+            We only use your data to deliver the service, delete it shortly afterwards and don’t share it for any commercial purposes.
           </div>
           <div class="text-xs-center mt-4">
             <v-btn light large block id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">
