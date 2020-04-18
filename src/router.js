@@ -1,11 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import MainView from './views/main.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import MainView from './views/main.vue';
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
+const routes = [
     {
       path: '/',
       name: 'main',
@@ -19,7 +18,8 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/about.vue')
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/about.vue')
     },
     {
       path: '/core/:id',
@@ -33,3 +33,12 @@ export default new Router({
     }
   ]
 })
+
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
+
+export default router
