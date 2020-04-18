@@ -1,6 +1,6 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import MainView from './views/main.vue';
+import Vue from 'vue'
+import Router from 'vue-router'
+import MainView from './views/main.vue'
 
 Vue.use(Router)
 
@@ -31,8 +31,7 @@ const routes = [
   }
 ]
 
-
-const router = new VueRouter({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes

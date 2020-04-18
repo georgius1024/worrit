@@ -8,7 +8,7 @@
       </v-flex>
       <v-flex xs6 md3 class="text-xs-center">
         <v-layout align-center justify-center>
-          <router-link class="mt-1 white--text" :to="{name: 'about'}">
+          <router-link class="mt-1 white--text" :to="{ name: 'about' }">
             About Worrit
           </router-link>
         </v-layout>

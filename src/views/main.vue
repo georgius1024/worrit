@@ -1,28 +1,37 @@
 <template>
   <v-content id="top">
     <v-fade-transition>
-      <v-layout class="pa-4" v-show="step===0">
+      <v-layout class="pa-4" v-show="step === 0">
         <v-flex md6 offset-md3>
-          <h1 class="display-1 mb-5">Worrit.<br>The world's first worrysitter.</h1>
+          <h1 class="display-1 mb-5">Worrit.<br />The world's first worrysitter.</h1>
           <p>
             In average,
-            <a href="https://www.counselheal.com/articles/3609/20130128/average-person-spends-5-years-life-worrying.htm"
-               class="white-link" target="_blank">
-              we spend 5 years of our lives worrying
-            </a>,
-            even if
-            <a href="https://www.huffpost.com/entry/85-of-what-we-worry-about_b_8028368" class="white-link"
-               target="_blank">
-              85% of what we worry about never happens
-            </a>.
-            <a href="https://www.webmd.com/balance/guide/how-worrying-affects-your-body" class="white-link"
-               target="_blank">
-              Constant worrying takes a toll on your emotional and physical health
-            </a>,
-            it prevents you from living in the moment, acting boldly, and working towards reaching your dreams.
+            <a
+              href="https://www.counselheal.com/articles/3609/20130128/average-person-spends-5-years-life-worrying.htm"
+              class="white-link"
+              target="_blank"
+            >
+              we spend 5 years of our lives worrying </a
+            >, even if
+            <a
+              href="https://www.huffpost.com/entry/85-of-what-we-worry-about_b_8028368"
+              class="white-link"
+              target="_blank"
+            >
+              85% of what we worry about never happens </a
+            >.
+            <a
+              href="https://www.webmd.com/balance/guide/how-worrying-affects-your-body"
+              class="white-link"
+              target="_blank"
+            >
+              Constant worrying takes a toll on your emotional and physical health </a
+            >, it prevents you from living in the moment, acting boldly, and working towards reaching your dreams.
           </p>
           <p>
-            The Internet has many tips to stop worrying - breathe, meditate, exercise, call a therapist, take off to a buddhist monastery. But sometimes what you need a is just a quick fix, a pause, a breath of fresh air. This is what Worrit is for.
+            The Internet has many tips to stop worrying - breathe, meditate, exercise, call a therapist, take off to a
+            buddhist monastery. But sometimes what you need a is just a quick fix, a pause, a breath of fresh air. This
+            is what Worrit is for.
           </p>
           <p>
             <b>
@@ -35,7 +44,8 @@
             <li>Immediately after, your data is automatically deleted to ensure that your experience is private.</li>
           </ol>
           <p class="mt-4">
-            Worrit allows you to unblock your mind, regain your strength, and focus on solutions instead of problems, <b>for free</b>.
+            Worrit allows you to unblock your mind, regain your strength, and focus on solutions instead of problems,
+            <b>for free</b>.
           </p>
           <div class="text-xs-center mt-4">
             <v-btn light large block @click="toMain">
@@ -46,11 +56,12 @@
       </v-layout>
     </v-fade-transition>
     <v-fade-transition>
-      <v-layout class="pa-4" id="main" v-show="step===1">
+      <v-layout class="pa-4" id="main" v-show="step === 1">
         <v-flex md6 offset-md3>
           <h1 class="display-1 mb-4">Pause your worries, book a worrysitter</h1>
           <div class="mb-3 v-label white--text">
-            What bugs you, disturbs you, terrifies you, keeps you up at night? Enter your worries in the following form, one by one, as many as you want.
+            What bugs you, disturbs you, terrifies you, keeps you up at night? Enter your worries in the following form,
+            one by one, as many as you want.
           </div>
           <div v-for="(pair, index) in pairs" :key="pair.worry">
             <v-text-field
@@ -106,22 +117,19 @@
             type="email"
             placeholder="Your awesome email"
           />
-          <v-checkbox
-            v-model="agreed"
-            label="Accept the Privacy Policy."
-          />
+          <v-checkbox v-model="agreed" label="Accept the Privacy Policy." />
           <div class="v-label white--text mb-3" style="line-height: 21px">
             <v-icon class="mr-2">
               picture_as_pdf
             </v-icon>
-            <a class="white--text" href="/worrit_privacy_policy.pdf" target="_blank"
-            >See Worrit privacy policy</a>
+            <a class="white--text" href="/worrit_privacy_policy.pdf" target="_blank">See Worrit privacy policy</a>
           </div>
           <div class="v-label white--text mb-3" style="line-height: 21px">
-            We only use your data to deliver the service, delete it shortly afterwards and don’t share it for any commercial purposes.
+            We only use your data to deliver the service, delete it shortly afterwards and don’t share it for any
+            commercial purposes.
           </div>
           <div class="text-xs-center mt-4">
-            <v-btn light large block id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk) ">
+            <v-btn light large block id="cta" @click="book()" :disabled="!(agreed && worriesIsOK && emailIsOk)">
               Start my break
             </v-btn>
           </div>
@@ -190,16 +198,16 @@ export default {
       this.store()
     },
     updateItem(index, worry) {
-      this.worries = this.worries.map((oldWorry, worryIndex) => {
-        return worryIndex === index ? worry : oldWorry
-      }).filter(worry => Boolean(worry))
+      this.worries = this.worries
+        .map((oldWorry, worryIndex) => {
+          return worryIndex === index ? worry : oldWorry
+        })
+        .filter(worry => Boolean(worry))
       this.lastEditedWorry = index
       this.store()
     },
     removeItem(index) {
-      this.worries = this.worries.filter(
-        (worry, worryIndex) => worryIndex !== index
-      )
+      this.worries = this.worries.filter((worry, worryIndex) => worryIndex !== index)
       this.store()
     },
     restore() {
@@ -224,7 +232,9 @@ export default {
         case 1:
           return 'and...'
         case 2:
-          return 'and if all of this wasn\'t enough...'
+          /*eslint-disable */
+          return `and if all of this wasn't enough...`
+          /*eslint-enable */
         case 3:
           return 'and...'
         case 4:
@@ -243,16 +253,15 @@ export default {
         worries: this.effectiveWorries
       }
       API.post('api/queue', data)
-      .then(() => {
-        this.$router.push({ name: 'wait' })
-      })
-      .catch(console.error)
+        .then(() => {
+          this.$router.push({ name: 'wait' })
+        })
+        .catch(console.error)
     }
   }
 }
 </script>
 <style>
-
 .small-icon {
   width: 24px;
 }
@@ -265,7 +274,7 @@ export default {
   background-color: #ccc !important;
   color: #333 !important;
   cursor: not-allowed !important;
-  filter: blur(1px)
+  filter: blur(1px);
 }
 
 .v-messages__message {
@@ -279,7 +288,7 @@ export default {
 }
 
 .h-margin-auto {
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 .quote {
@@ -288,7 +297,8 @@ export default {
   font-style: italic;
 }
 
-.white-link, white-link:visited {
+.white-link,
+white-link:visited {
   text-decoration: none;
   color: #eee;
 }

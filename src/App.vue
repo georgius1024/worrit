@@ -2,9 +2,9 @@
   <div classs="app-wrapper">
     <v-app dark>
       <v-fade-transition>
-        <router-view/>
+        <router-view />
       </v-fade-transition>
-      <Footer/>
+      <Footer />
     </v-app>
   </div>
 </template>
@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style>
-
 html {
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -35,7 +34,6 @@ body {
 .height-100 {
   min-height: 100vh;
 }
-
 
 .theme--dark.application {
   background: inherit;

@@ -30,10 +30,7 @@
             </v-card-title>
             <v-card-text class="body-2">
               <div class="text-xs-center my-4">
-                <v-progress-circular
-                  :size="60"
-                  indeterminate
-                />
+                <v-progress-circular :size="60" indeterminate />
               </div>
               <p>
                 Loading.... Please wait few seconds or more...
@@ -44,9 +41,7 @@
                 Return to main page
               </v-btn>
             </v-card-actions>
-
           </v-card>
-
         </template>
         <template v-else>
           <template v-if="booking.status === 'completed'">
@@ -57,8 +52,10 @@
                 </h1>
               </v-card-title>
               <v-card-text>
-                <p> For the last {{duration}}
-                  I was taking care of your worries: biting nails, pacing from one corner of the Internet to another, and stress-eating all the visitors’ cookies.
+                <p>
+                  For the last {{ duration }}
+                  I was taking care of your worries: biting nails, pacing from one corner of the Internet to another,
+                  and stress-eating all the visitors’ cookies.
                 </p>
                 <p>
                   Now it’s time to handle them back to you.
@@ -68,7 +65,7 @@
                 </p>
                 <ul class="mt-0">
                   <li v-for="(item, index) in booking.worries" :key="index" class="title">
-                    {{item}}
+                    {{ item }}
                   </li>
                 </ul>
                 <p class="body-2 mb-0 mt-3">
@@ -101,41 +98,25 @@
               Worrit is working...
             </h1>
             <p>
-              Soften your forehead.
-              Relax your sholders.
-              Take a deep breath.
-              Focus on what really matters.
+              Soften your forehead. Relax your sholders. Take a deep breath. Focus on what really matters.
             </p>
             <p>
-              Worrit, the world’s first worrysitter, is taking care of your worries. You’ll get an email when it’s time to pick your cares up.
+              Worrit, the world’s first worrysitter, is taking care of your worries. You’ll get an email when it’s time
+              to pick your cares up.
             </p>
             <p>
               Until then, don’t worry.
             </p>
             <div class="animation-wrapper">
-              <div>
-                ...{{currentWorry.worry}}...
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="80px" height="60px"
-                viewBox="5 0 80 60">
-                <path
-                  id="wave"
-                  fill="none"
-                  stroke="#fff"
-                  stroke-width="2"
-                  stroke-linecap="round">
-                </path>
+              <div>...{{ currentWorry.worry }}...</div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="80px" height="60px" viewBox="5 0 80 60">
+                <path id="wave" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
               </svg>
-              <div>
-                ...{{currentWorry.action}}...
-              </div>
+              <div>...{{ currentWorry.action }}...</div>
             </div>
             <div class="text-xs-center body-2 mt-2">
-              {{timeLeft}}
+              {{ timeLeft }}
             </div>
-
           </template>
         </template>
       </v-flex>
@@ -186,29 +167,28 @@ export default {
         error: false
       }
       API.get('api/queue/' + id)
-      .then(({ data: body }) => {
-        this.booking = body.data
-        if (this.booking.status === 'processing') {
-          this.timer = setInterval(() => {
+        .then(({ data: body }) => {
+          this.booking = body.data
+          if (this.booking.status === 'processing') {
+            this.timer = setInterval(() => {
+              this.check()
+            }, 1000)
             this.check()
-          }, 1000)
-          this.check()
-          this.$nextTick()
-          .then(() => {
-            this.initWave()
-          })
-        }
-      })
-      .catch(error => {
-        this.booking = {
-          loading: false,
-          error: true
-        }
-        console.error(error)
-      })
+            this.$nextTick().then(() => {
+              this.initWave()
+            })
+          }
+        })
+        .catch(error => {
+          this.booking = {
+            loading: false,
+            error: true
+          }
+          console.error(error)
+        })
     },
     check() {
-      const now = (new Date()).valueOf()
+      const now = new Date().valueOf()
       const rest = this.booking.before - now
       if (rest <= 0 && this.booking.before) {
         clearInterval(this.timer)
@@ -245,59 +225,91 @@ export default {
       const m = 0.512286623256592433
 
       function buildWave(w, h) {
-
         const a = h / 4
         const y = h / 2
 
         const pathData = [
-          'M', w * 0, y + a / 2,
+          'M',
+          w * 0,
+          y + a / 2,
           'c',
-          a * m, 0,
-          -(1 - a) * m, -a,
-          a, -a,
+          a * m,
+          0,
+          -(1 - a) * m,
+          -a,
+          a,
+          -a,
           's',
-          -(1 - a) * m, a,
-          a, a,
+          -(1 - a) * m,
+          a,
+          a,
+          a,
           's',
-          -(1 - a) * m, -a,
-          a, -a,
+          -(1 - a) * m,
+          -a,
+          a,
+          -a,
           's',
-          -(1 - a) * m, a,
-          a, a,
+          -(1 - a) * m,
+          a,
+          a,
+          a,
           's',
-          -(1 - a) * m, -a,
-          a, -a,
+          -(1 - a) * m,
+          -a,
+          a,
+          -a,
 
           's',
-          -(1 - a) * m, a,
-          a, a,
+          -(1 - a) * m,
+          a,
+          a,
+          a,
           's',
-          -(1 - a) * m, -a,
-          a, -a,
+          -(1 - a) * m,
+          -a,
+          a,
+          -a,
           's',
-          -(1 - a) * m, a,
-          a, a,
+          -(1 - a) * m,
+          a,
+          a,
+          a,
           's',
-          -(1 - a) * m, -a,
-          a, -a,
+          -(1 - a) * m,
+          -a,
+          a,
+          -a,
           's',
-          -(1 - a) * m, a,
-          a, a,
+          -(1 - a) * m,
+          a,
+          a,
+          a,
           's',
-          -(1 - a) * m, -a,
-          a, -a,
+          -(1 - a) * m,
+          -a,
+          a,
+          -a,
           's',
-          -(1 - a) * m, a,
-          a, a,
+          -(1 - a) * m,
+          a,
+          a,
+          a,
           's',
-          -(1 - a) * m, -a,
-          a, -a,
+          -(1 - a) * m,
+          -a,
+          a,
+          -a,
           's',
-          -(1 - a) * m, a,
-          a, a,
+          -(1 - a) * m,
+          a,
+          a,
+          a,
           's',
-          -(1 - a) * m, -a,
-          a, -a
+          -(1 - a) * m,
+          -a,
+          a,
+          -a
         ].join(' ')
 
         path.setAttribute('d', pathData)
@@ -318,15 +330,14 @@ export default {
   zoom: 300%;
   flex-direction: column;
 }
-.animation-wrapper>div {
+.animation-wrapper > div {
   text-align: center;
   font-size: 6px;
 }
-.animation-wrapper>svg {
+.animation-wrapper > svg {
   margin: 0 auto;
   overflow: hidden;
 }
-
 
 #wave {
   stroke-dasharray: 0 16 101 16;

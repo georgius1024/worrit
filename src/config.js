@@ -3,7 +3,8 @@ const development = {
 }
 
 const production = {
-  ...development, ...{
+  ...development,
+  ...{
     apiEndPoint: '//' + window.location.host + '/'
   }
 }

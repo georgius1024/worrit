@@ -20,7 +20,6 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-
       </v-flex>
     </v-layout>
   </v-content>
