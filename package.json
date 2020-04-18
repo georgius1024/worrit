@@ -5,11 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint --fix",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint --fix"
   },
-  "license": "Strictly private",
-  "homepage": "https://georgius1024.github.io/worrit/",
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^3.6.5",
@@ -33,11 +31,15 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.13.1",
+    "prerender-spa-plugin": "^3.2.1",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "vue-cli-plugin-prerender-spa": "^1.1.6",
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.4.3"
-  }
+  },
+  "homepage": "https://georgius1024.github.io/worrit/",
+  "license": "Strictly private"
 }

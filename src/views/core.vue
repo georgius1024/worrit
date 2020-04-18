@@ -152,7 +152,7 @@ export default {
     }
   },
   mounted() {
-    this.fetch(this.$route.params.id)
+    this.fetch(this.$route.query.id)
   },
   beforeDestroy() {
     if (this.timer) {

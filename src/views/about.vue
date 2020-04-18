@@ -21,12 +21,12 @@
           ><br />
         </p>
         <p>
-          Yuri Timofeev - UX/UI, web development
+          Yuri Timofeev - UX/UI, front-end, back-end
           <a class="white--text" href="https://github.com/georgius1024" target="_blank"
             >https://github.com/georgius1024</a
           >
         </p>
-        <img src="/us.png" />
+        <img src="/we.png" />
         <v-divider class="my-4" />
         <v-btn light large block href="https://forms.gle/AmeP2KhFnYCWxKgNA" target="_blank" class="mt-3">
           Leave a review
